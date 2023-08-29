@@ -11,7 +11,7 @@ Este é um sistema de gerenciamento de aluguel desenvolvido em Java. O sistema p
 * Luís Felipe Teixeira Dias
 * Victor Reis Carlota
 
-  ---
+---
 ## Professor responsável 
 
 * Danilo Boechat Seufitelli
