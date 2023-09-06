@@ -51,7 +51,7 @@ class Aluguel {
         this.equipamento = equipamento;
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
-        double numDias = 1.0; // Para calcular o número de dias de aluguel
+        double numDias = 1.0;
         valorTotal = numDias * equipamento.getValorDiario();
 
         alugueis.add(this);
