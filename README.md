@@ -49,7 +49,7 @@
 
 + Arthur Athayde:  arthurqueiroz2705@gmail.com
 
-+ Enrico Menicucci Gomes:
++ Enrico Menicucci Gomes: enricomenicucci818@gmail.com
 
 + Lucas Ribeiro: learn_02@hotmail.com
 
