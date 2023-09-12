@@ -47,7 +47,7 @@
 **Contribuintes**
 ---
 
-+ Arthur Athayde:  
++ Arthur Athayde:  arthurqueiroz2705@gmail.com
 
 + Enrico Menicucci Gomes:
 
