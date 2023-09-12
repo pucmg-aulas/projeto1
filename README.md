@@ -1,21 +1,17 @@
-# `Gerenciador de Alugueis` para o primeiro trabalho do segundo período de Programação Modular
+# **Gerenciador de Aluguéis**
 
-
-
-
+### Programação Modular - Trabalho 1 
 
 ![Cool gif](https://gifdb.com/images/high/coding-animated-laptop-flow-stream-ja04010rm5o68zfk.gif)
+![Cool gif](https://gifdb.com/images/high/computer-programming-html-coding-ygk3aq1mwnfu4360.gif)
 
-### Feito em Windows
+> ### Feito em Windows 🖥️ 
 
-
-
-**Installation Options**
+**Installation Options** 
 ---
 
-
 ```
-1. Instalação usando javac e java:
+1. Instalação utilizando javac e java:
 
     + `$ javac versaofinal.java`
     + `$ java versaofinal`
@@ -25,6 +21,7 @@
      + Importe o projeto Java em seu IDE de preferência.
      + Execute o programa a partir do IDE.
 ```
+
 ---
 **Funcionalidades**
 ---
@@ -41,9 +38,6 @@
 
 ---
 
-
-
-
 **Contribuintes**
 ---
 
@@ -53,8 +47,6 @@
 
 + Lucas Ribeiro: learn_02@hotmail.com
 
-+ Luís Felipe Teixeira:
++ Luís Felipe Teixeira Dias Brescia: luisfelipebrescia@gmail.com
 
 + Victor Reis Carlota: victor.reis.carlotta@gmail.com
-
----
