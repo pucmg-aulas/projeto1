@@ -3,7 +3,6 @@
 ### Programação Modular - Trabalho 1 
 
 ![Cool gif](https://gifdb.com/images/high/coding-animated-laptop-flow-stream-ja04010rm5o68zfk.gif)
-![Cool gif](https://gifdb.com/images/high/computer-programming-html-coding-ygk3aq1mwnfu4360.gif)
 
 > ### Feito em Windows 🖥️ 
 
