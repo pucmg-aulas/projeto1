@@ -22,8 +22,8 @@
 
 2. Instalação usando um IDE:
 
-   + Importe o projeto Java em seu IDE de preferência.
-   + Execute o programa a partir do IDE.
+    + Importe o projeto Java em seu IDE de preferência.
+    + Execute o programa a partir do IDE.
 ```
 ---
 **Funcionalidades**
