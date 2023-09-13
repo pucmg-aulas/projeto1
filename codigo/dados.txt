@@ -1,0 +1,8 @@
+Cliente: VICTOR
+
+
+Cliente: VICTOR
+Equipamento Alugado: Escavadeira
+Data de Início: 2023-09-12
+Data de Término: 2023-09-13
+

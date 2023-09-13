@@ -39,6 +39,9 @@
     A lista de aluguéis é inicializada com dois aluguéis de exemplo.
  */
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -49,10 +52,8 @@ public class versaofinal {
         Equipamento equipamento1 = new Equipamento("E5134", "Escavadeira", 200.0);
         Equipamento equipamento2 = new Equipamento("B2549", "Betoneira", 150.0);
 
-        Cliente cliente1 = new Cliente("Cliente A");
-        Cliente cliente2 = new Cliente("Cliente B");
-
-        List<Aluguel> alugueis = new ArrayList<>(); 
+        List<Cliente> clientes = new ArrayList<>();
+        List<Aluguel> alugueis = new ArrayList<>();
 
         int escolha = 0;
 
@@ -79,10 +80,11 @@ public class versaofinal {
                     int mes = scanner.nextInt();
                     System.out.println("Digite o ano:");
                     int ano = scanner.nextInt();
-                    relatorioMensal(mes, ano, alugueis);
+                    double faturamentoMensal = relatorioMensal(mes, ano, alugueis);
+                    salvarRelatorioMensal(mes, ano, faturamentoMensal);
                     break;
                 case 3:
-                    criarAluguel(scanner, alugueis);
+                    criarAluguel(scanner, clientes, alugueis);
                     break;
                 case 4:
                     System.out.println("Saindo do programa.");
@@ -90,44 +92,50 @@ public class versaofinal {
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
-        } 
+        }
 
+        salvarDados(clientes, alugueis);
         scanner.close();
     }
 
     public static void consultaCliente(Cliente cliente, List<Aluguel> alugueis) {
-        List<Aluguel> alugueisCliente = Aluguel.consultarAlugueisCliente(cliente, alugueis);
-
         System.out.println("\nAluguéis do cliente " + cliente.getNome() + ":");
-        for (Aluguel aluguel : alugueisCliente) {
-            System.out.println("Equipamento: " + aluguel.getEquipamento().getDescricao()
-                    + " | Data Início: " + aluguel.getDataInicio()
-                    + " | Data Término: " + aluguel.getDataTermino()
-                    + " | Valor Total: " + aluguel.getValorTotal());
+        boolean encontrouAluguel = false;
+
+        for (Aluguel aluguel : alugueis) {
+            if (aluguel.getCliente().getNome().equalsIgnoreCase(cliente.getNome())) {
+                encontrouAluguel = true;
+                System.out.println("Equipamento: " + aluguel.getEquipamento().getDescricao());
+                System.out.println("Data Início: " + aluguel.getDataInicio());
+                System.out.println("Data Término: " + aluguel.getDataTermino());
+                System.out.println("Valor Total: " + aluguel.getValorTotal());
+                System.out.println();
+            }
         }
 
-        if (alugueisCliente.size() == 0) {
-            System.out.println("Nenhum aluguel encontrado.");
+        if (!encontrouAluguel) {
+            System.out.println("Nenhum aluguel encontrado para o cliente " + cliente.getNome() + ".");
         }
     }
 
-    public static void relatorioMensal(int mes, int ano, List<Aluguel> alugueis) {
+    public static double relatorioMensal(int mes, int ano, List<Aluguel> alugueis) {
         double faturamentoMensal = Aluguel.calcularFaturamentoMensal(mes, ano, alugueis);
 
         System.out.println("Relatório Mensal - " + mes + "/" + ano + ":");
         System.out.println("Faturamento Total: " + faturamentoMensal);
+
+        return faturamentoMensal;
     }
 
-    public static void criarAluguel(Scanner scanner, List<Aluguel> alugueis) {
+    public static void criarAluguel(Scanner scanner, List<Cliente> clientes, List<Aluguel> alugueis) {
         System.out.println("Digite o nome do cliente:");
         scanner.nextLine();
         String nomeCliente = scanner.nextLine();
         Cliente cliente = new Cliente(nomeCliente);
+        clientes.add(cliente);
 
         System.out.println("Escolha um equipamento (E5134 - Escavadeira, B2549 - Betoneira):");
         String codigoEquipamento = scanner.nextLine();
-
-        
 
         Equipamento equipamento;
         if (codigoEquipamento.equals("E5134")) {
@@ -155,6 +163,43 @@ public class versaofinal {
         alugueis.add(aluguel);
 
         System.out.println("Aluguel criado com sucesso.");
+    }
+
+    public static void salvarDados(List<Cliente> clientes, List<Aluguel> alugueis) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("dados.txt"))) {
+            for (Cliente cliente : clientes) {
+                writer.write("Cliente: " + cliente.getNome());
+                writer.newLine();
+            }
+            writer.newLine();
+            writer.newLine();
+            for (Aluguel aluguel : alugueis) {
+                writer.write("Cliente: " + aluguel.getCliente().getNome());
+                writer.newLine();
+                writer.write("Equipamento Alugado: " + aluguel.getEquipamento().getDescricao());
+                writer.newLine();
+                writer.write("Data de Início: " + aluguel.getDataInicio());
+                writer.newLine();
+                writer.write("Data de Término: " + aluguel.getDataTermino());
+                writer.newLine();
+                writer.newLine();
+            }
+            System.out.println("Dados salvos com sucesso no arquivo 'dados.txt'.");
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar dados no arquivo: " + e.getMessage());
+        }
+    }
+
+    public static void salvarRelatorioMensal(int mes, int ano, double faturamento) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("relatorio_mensal.txt"))) {
+            writer.write("Relatório Mensal - " + mes + "/" + ano);
+            writer.newLine();
+            writer.write("Faturamento Total: " + faturamento);
+            writer.newLine();
+            System.out.println("Relatório mensal salvo com sucesso no arquivo 'relatorio_mensal.txt'.");
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar relatório mensal no arquivo: " + e.getMessage());
+        }
     }
 
     static class Equipamento {
@@ -284,3 +329,9 @@ public class versaofinal {
         }
     }
 }
+
+
+
+
+
+
