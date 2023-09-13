@@ -69,7 +69,8 @@ public class versaofinal {
                 case 1:
                     scanner.nextLine();
                     System.out.println("\nDigite o nome do cliente:");
-                    String nomeCliente = scanner.nextLine();
+                    String nomeClienteDesformatado = scanner.nextLine();
+                    String nomeCliente = nomeClienteDesformatado.toUpperCase();
                     Cliente cliente = new Cliente(nomeCliente);
                     consultaCliente(cliente, alugueis);
                     break;
@@ -175,7 +176,7 @@ public class versaofinal {
         private String nome;
 
         public Cliente(String nome) {
-            this.nome = nome;
+            this.nome = nome.toUpperCase();
         }
 
         public String getNome() {
