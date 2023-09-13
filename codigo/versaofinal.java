@@ -46,8 +46,8 @@ import java.util.Scanner;
 public class versaofinal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Equipamento equipamento1 = new Equipamento("E1", "Escavadeira", 200.0);
-        Equipamento equipamento2 = new Equipamento("E2", "Betoneira", 150.0);
+        Equipamento equipamento1 = new Equipamento("E5134", "Escavadeira", 200.0);
+        Equipamento equipamento2 = new Equipamento("B2549", "Betoneira", 150.0);
 
         Cliente cliente1 = new Cliente("Cliente A");
         Cliente cliente2 = new Cliente("Cliente B");
