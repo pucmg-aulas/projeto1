@@ -79,13 +79,13 @@ public class versaofinal {
                     int mes = scanner.nextInt();
                     System.out.println("Digite o ano:");
                     int ano = scanner.nextInt();
-                     relatorioMensal(mes, ano, alugueis);
+                    relatorioMensal(mes, ano, alugueis);
                     break;
                 case 3:
-                     criarAluguel(scanner, alugueis);
+                    criarAluguel(scanner, alugueis);
                     break;
                 case 4:
-                     System.out.println("Saindo do programa.");
+                    System.out.println("Saindo do programa.");
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -124,17 +124,26 @@ public class versaofinal {
         String nomeCliente = scanner.nextLine();
         Cliente cliente = new Cliente(nomeCliente);
 
-        System.out.println("Escolha um equipamento (E1 - Escavadeira, E2 - Betoneira):");
+        System.out.println("Escolha um equipamento (E5134 - Escavadeira, B2549 - Betoneira):");
         String codigoEquipamento = scanner.nextLine();
 
+        
+
         Equipamento equipamento;
-        if (codigoEquipamento.equals("E1")) {
-            equipamento = new Equipamento("E1", "Escavadeira", 200.0);
-        } else if (codigoEquipamento.equals("E2")) {
-            equipamento = new Equipamento("E2", "Betoneira", 150.0);
+        if (codigoEquipamento.equals("E5134")) {
+            equipamento = new Equipamento("E5134", "Escavadeira", 200.0);
+        } else if (codigoEquipamento.equals("B2549")) {
+            equipamento = new Equipamento("B2549", "Betoneira", 150.0);
         } else {
             System.out.println("Equipamento inválido.");
             return;
+        }
+
+        for (Aluguel aluguel : alugueis) {
+            if (aluguel.getEquipamento().getCodigo().equals(codigoEquipamento)) {
+                System.out.println("Este equipamento já foi alugado.");
+                return;
+            }
         }
 
         System.out.println("Digite a data de início (YYYY-MM-DD):");
